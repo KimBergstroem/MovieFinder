@@ -1,8 +1,8 @@
-# Gaming Library for n00bs
+# Movie Finder
 
 ## Description
 
-Ett frontend-projekt byggt med moderna webbteknologier som låter användare utforska och söka efter filmer. Projektet använder The Movie Database API för att hämta filmdata.
+A frontend project built with modern web technologies that allows users to explore and search for movies. The project uses The Movie Database API to fetch movie data.
 
 ::API and Movie fetching is from::
 https://www.themoviedb.org/
@@ -10,40 +10,54 @@ https://developer.themoviedb.org/
 
 ### Technologies
 
-- Vite - Fast development environment and build tool
-- React - UI library
-- React Router - Client-based routing
-- Styled Components - Styling directly in the components pattern design
-- React Query - Data management and caching
-- ESLint - Code quality and standardization
-- Prettier - Code formatting
+- **Vite**: Fast development environment and build tool
+- **React**: UI library
+- **React Router**: Client-based routing
+- **Styled Components**: Styling directly in components
+- **React Query**: Data management and caching
+- **ESLint**: Code quality and standardization
+- **Prettier**: Code formatting
 
 ## Features
+
+- Explore and search for movies
+- View detailed information about movies
+- Responsive design for different devices
+- Skeleton loaders for better user experience during loading
 
 ## User Stories
 
 As a user, I want to be able to:
 
+- Search for movies based on genre and year
+- See detailed information about a selected movie
+- Navigate easily through the application
+
 ## Installation
 
 1. Clone the project:
 
-   - git clone [repository-url]
+   - `git clone [repository-url]`
 
-2. Navigate to the project folder:
+2. Navigate to the project directory:
 
-   - cd client
+   - `cd client`
 
 3. Install dependencies:
 
-   - npm install
+   - `npm install`
 
 4. Create a .env file in the root directory with the following variables:
+
+   - `VITE_BASE_URL=[your_base_url]`
+   - `VITE_API_KEY=[your_api_key]`
+   - `VITE_IMAGE_BASE_URL=[your_image_base_url]`
 
 ## Development
 
 Start the development server:
--npm run dev
+
+- `npm run dev`
 
 ### Other commands
 
@@ -54,7 +68,8 @@ Start the development server:
 
 ## Project Structure
 
-src/
+- **src/**: Source code for the application
+- **public/**: Public assets and index.html
 
 ## Contribute
 
@@ -66,7 +81,7 @@ src/
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT license.
 
 ## Contact
 
