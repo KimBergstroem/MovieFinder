@@ -39,3 +39,24 @@ export const Main = styled.main`
   padding: ${({ theme }) => theme.spacing.lg};
   width: 100%;
 `;
+
+export const Footer = styled.footer`
+  text-align: center;
+  padding: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ theme }) => theme.colors.surface};
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FooterLogo = styled.img`
+  width: 100px;
+  height: auto;
+`;
+export const Paragraph = styled.p`
+  font-size: 0.8rem;
+  margin-top: ${({ theme }) => theme.spacing.sm};
+  color: ${({ theme }) => theme.colors.text.secondary};
+`;
