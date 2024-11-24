@@ -9,4 +9,9 @@ export const ERROR = {
   /* Data */
   DATA_FETCH: "Failed to fetch data. Please try again.",
   DATA_LOAD: "Error loading saved data",
+
+  /* Movies */
+  FETCH_MOVIES: "Something went wrong with fetching the movies",
+  FETCH_MOVIE_DETAILS: "Something went wrong with fetching the movie details",
+  GENRES_FETCH: "Failed to fetch genres",
 };
