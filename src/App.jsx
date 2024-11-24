@@ -1,26 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Layout from "@/pages/Layout";
+import AppRoutes from "@/routes/AppRoutes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
-      cacheTime: Infinity,
+      staleTime: 5 * 60 * 1000, // 5 min
+      cacheTime: 30 * 60 * 1000, // 30 min
+      retry: 1,
+      refetchOnWindowFocus: false,
     },
   },
 });
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route path="/" element={<Layout />} />
-        </Routes>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <AppRoutes />
+    </QueryClientProvider>
   );
 };
 
