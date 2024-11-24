@@ -1,40 +1,51 @@
-export default async function fetchMovies(page = 1, genre = "") {
+import { ERROR } from "@/utils/validation";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+export default async function fetchMovies(page = 1, genre = "", year = "") {
   try {
-    const genreParam = genre ? `&with_genres=${genre}` : "";
-    const url = `${import.meta.env.VITE_BASE_URL}discover/movie?api_key=${import.meta.env.VITE_API_KEY}&page=${page}${genreParam}`;
+    const params = new URLSearchParams({
+      api_key: API_KEY,
+      page: page.toString(),
+      ...(genre && { with_genres: genre }),
+      ...(year && { primary_release_year: year }),
+    });
+
+    const url = `${BASE_URL}discover/movie?${params.toString()}`;
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error("Something went wrong with fetching the movies");
+      throw new Error(ERROR.FETCH_MOVIES);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching movies:", error);
+    console.error("", error);
     throw error;
   }
 }
 
 export async function fetchMovieDetails(id) {
   try {
-    const url = `${import.meta.env.VITE_BASE_URL}movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=credits`;
+    const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&append_to_response=credits`;
     const response = await fetch(url);
     console.log("Fetching movie details from URL:", url);
     if (!response.ok) {
-      throw new Error("Something went wrong with fetching the movie details");
+      throw new Error(ERROR.FETCH_MOVIE_DETAILS);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching movie details:", error);
+    console.error("", error);
     throw error;
   }
 }
 
 export async function fetchGenres() {
-  const url = `${import.meta.env.VITE_BASE_URL}genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}`;
+  const url = `${BASE_URL}genre/movie/list?api_key=${API_KEY}`;
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error("Failed to fetch genres");
+    throw new Error(ERROR.GENRES_FETCH);
   }
   const data = await response.json();
   return data.genres;
