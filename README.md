@@ -4,6 +4,10 @@
 
 Ett frontend-projekt byggt med moderna webbteknologier som låter användare utforska och söka efter filmer. Projektet använder The Movie Database API för att hämta filmdata.
 
+::API and Movie fetching is from::
+https://www.themoviedb.org/
+https://developer.themoviedb.org/
+
 ### Technologies
 
 - Vite - Fast development environment and build tool

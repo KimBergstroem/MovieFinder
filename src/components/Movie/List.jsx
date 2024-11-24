@@ -5,7 +5,7 @@ import {
   MovieList,
   MovieItem,
   LoadMoreButton,
-} from "@/assets/css/movies.styles";
+} from "@/assets/css/movie/list.styles";
 import Card from "@/components/Movie/Card";
 
 function List() {
@@ -21,7 +21,6 @@ function List() {
     setPage((prev) => prev + 1);
   };
 
-  if (isLoading && !data) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

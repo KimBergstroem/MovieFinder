@@ -19,6 +19,9 @@ const Layout = () => {
           <NavLink as={Link} to="/">
             Home
           </NavLink>
+          <NavLink as={Link} to="/contact">
+            Contact
+          </NavLink>
         </Nav>
       </Header>
       <Main>
