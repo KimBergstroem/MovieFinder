@@ -10,10 +10,10 @@ export const FilterContainer = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  flex-wrap: wrap; /* Allow wrapping of buttons */
+  flex-wrap: wrap;
 
   @media (max-width: 700px) {
-    justify-content: space-between; /* Align buttons in two columns */
+    justify-content: space-between;
   }
 `;
 
@@ -26,14 +26,34 @@ export const GenreButton = styled.button`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   cursor: pointer;
   transition: background-color 0.3s;
-  flex: 0 0 calc(50% - ${({ theme }) => theme.spacing.sm}); /* 50% width minus gap */
-  max-width: 100%; /* Ensure buttons do not overflow */
+  flex: 0 0 calc(50% - ${({ theme }) => theme.spacing.sm});
+  max-width: 100%;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }
 
   @media (min-width: 701px) {
-    flex: 0 0 auto; /* Full width for larger screens */
+    flex: 0 0 auto;
+  }
+`;
+
+export const YearDropdown = styled.select`
+  background-color: ${({ theme }) => theme.colors.border};
+  color: white;
+  border: none;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex: 0 0 calc(50% - ${({ theme }) => theme.spacing.sm});
+  max-width: 100%;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
+
+  @media (min-width: 701px) {
+    flex: 0 0 auto;
   }
 `;

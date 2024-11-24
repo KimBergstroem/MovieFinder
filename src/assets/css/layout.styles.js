@@ -16,7 +16,7 @@ export const Nav = styled.nav`
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -40,6 +40,7 @@ export const Main = styled.main`
   width: 100%;
 `;
 
+// Footer Section Styling -------------------------------->
 export const Footer = styled.footer`
   text-align: center;
   padding: ${({ theme }) => theme.spacing.md};
