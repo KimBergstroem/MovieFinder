@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { ERROR } from "@/utils/validation";
 import fetchMovies from "@/apis/fetchMovies";
 import {
   MovieList,
@@ -7,13 +8,19 @@ import {
   LoadMoreButton,
 } from "@/assets/css/movie/list.styles";
 import Card from "@/components/Movie/Card";
+import MovieListSkeleton from "@/components/ui/skeletons/MovieListSkeleton";
 
-function List({ selectedGenre }) {
+function List({ selectedGenre, selectedYear }) {
   const [page, setPage] = useState(1);
 
+  const queryKey = useMemo(
+    () => ["movies", page, selectedGenre, selectedYear],
+    [page, selectedGenre, selectedYear]
+  );
+
   const { data, isLoading, error } = useQuery({
-    queryKey: ["movies", page, selectedGenre],
-    queryFn: () => fetchMovies(page, selectedGenre),
+    queryKey,
+    queryFn: () => fetchMovies(page, selectedGenre, selectedYear),
     keepPreviousData: true,
   });
 
@@ -21,7 +28,8 @@ function List({ selectedGenre }) {
     setPage((prev) => prev + 1);
   };
 
-  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) return <MovieListSkeleton />;
+  if (error) return <div>{ERROR.DATA_FETCH}</div>;
 
   return (
     <>

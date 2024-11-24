@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMovieDetails } from "@/apis/fetchMovies";
+import { ERROR } from "@/utils/validation";
 import MovieDetailSkeleton from "@/components/ui/skeletons/MovieDetailSkeleton";
 import {
   DetailContainer,
@@ -23,7 +24,7 @@ function MovieDetail() {
   });
 
   if (isLoading) return <MovieDetailSkeleton />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>{ERROR.FETCH_MOVIE_DETAILS}</div>;
 
   const countries = data.production_countries
     .map((country) => country.name)
