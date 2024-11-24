@@ -1,5 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { ThemeProvider } from "styled-components";
+import { darkTheme } from "@/assets/css/theme";
+import GlobalStyles from "@/assets/css/global.styles.js";
 import AppRoutes from "@/routes/AppRoutes";
 
 const queryClient = new QueryClient({
@@ -15,9 +17,12 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AppRoutes />
-    </QueryClientProvider>
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyles />
+      <QueryClientProvider client={queryClient}>
+        <AppRoutes />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 
