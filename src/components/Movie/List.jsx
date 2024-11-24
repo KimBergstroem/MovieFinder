@@ -8,12 +8,12 @@ import {
 } from "@/assets/css/movie/list.styles";
 import Card from "@/components/Movie/Card";
 
-function List() {
+function List({ selectedGenre }) {
   const [page, setPage] = useState(1);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["movies", page],
-    queryFn: () => fetchMovies(page),
+    queryKey: ["movies", page, selectedGenre],
+    queryFn: () => fetchMovies(page, selectedGenre),
     keepPreviousData: true,
   });
 
