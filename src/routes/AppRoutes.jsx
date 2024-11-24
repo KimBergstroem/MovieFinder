@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RouteErrorBoundary from "@/routes/RouteErrorBoundary";
 import ErrorBoundary from "@/routes/ErrorBoundary";
 import Layout from "@/components/Layout/Layout";
+import MovieDetail from "@/components/Movie/Detail";
+import Loader from "@/components/ui/Loader";
 
 const Home = lazy(() => import("@/pages/Home"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/movie/:id",
+        element: <MovieDetail />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
@@ -28,13 +34,7 @@ const router = createBrowserRouter([
 const AppRoutes = () => {
   return (
     <ErrorBoundary>
-      <Suspense
-        fallback={
-          <div>
-            <p>Laddar...</p>
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <RouterProvider router={router} />
       </Suspense>
     </ErrorBoundary>
